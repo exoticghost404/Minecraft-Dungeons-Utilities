@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minecraft Dungeons Utilities</title>
+    
+    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
+    <link rel="dns-prefetch" href="https://raw.githubusercontent.com" />
+
+    <link rel="manifest" href="manifest.json?v=12">
+    <meta name="theme-color" content="#f59e0b">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MCDUtils">
+    
+    <link rel="icon" type="image/png" href="e.png">
+    <link rel="apple-touch-icon" href="e.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              zinc: {
+                950: '#09090b', 900: '#18181b', 800: '#27272a', 700: '#3f3f46'
+              },
+              amber: {
+                500: '#f59e0b', 600: '#d97706', 400: '#fbbf24'
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #18181b; }
+      ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+      
+      @keyframes pulse-slow {
+        0%, 100% { opacity: 0.8; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.98); }
+      }
+      .animate-pulse-slow {
+        animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-BwfgyGv2.js"></script>
+  </head>
+  <body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-amber-500/30 selection:text-amber-400">
+    <div id="root">
+      <div id="app-loading-screen" class="fixed inset-0 flex flex-col items-center justify-center bg-zinc-950" style="font-family: system-ui, -apple-system, sans-serif;">
+        <div class="flex flex-col items-center max-w-sm px-6 text-center animate-pulse-slow">
+          <div class="relative w-16 h-16 mb-6 flex items-center justify-center bg-zinc-900 border-2 border-amber-500 rounded-xl shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+            <div class="absolute inset-1.5 bg-amber-500/20 rounded-lg animate-pulse"></div>
+            <svg class="w-8 h-8 text-amber-500 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+            </svg>
+          </div>
+          
+          <h1 class="text-xl font-bold tracking-tight text-white mb-2">Minecraft Dungeons Utilities</h1>
+          <p class="text-sm text-zinc-400 mb-6 font-medium">Preparing MCDUtils...</p>
+          
+          <div class="w-32 h-1 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800">
+            <div class="h-full bg-amber-500 rounded-full w-1/2 animate-[shimmer_1.5s_infinite_linear]" style="background-image: linear-gradient(90deg, #f59e0b 0%, #fbbf24 50%, #f59e0b 100%); background-size: 200% auto;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <script>
+      window.deferredInstallPrompt = null;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        window.deferredInstallPrompt = e;
+        if (window.onBeforeRestorePrompt) {
+          window.onBeforeRestorePrompt(e);
+        }
+      });
+
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          const isGH = window.location.pathname.startsWith('/Minecraft-Dungeons-Utilities');
+          const base = isGH ? '/Minecraft-Dungeons-Utilities/' : '/';
+          navigator.serviceWorker.register(base + 'sw.js?v=12').catch(err => {
+            console.error('[Service Worker] Registration failed: ', err);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
